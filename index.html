@@ -697,16 +697,17 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
     </div>
 
     <h3 class="guests-h reveal">Стати партнером проєкту<small>Ми постійно шукаємо партнерів, аби підлітки зустрічалися з тими, хто їх надихає</small></h3>
-    <div class="partner-tiers">
-      <div class="tier gen reveal">
-        <h4>Генеральний партнер</h4><div class="price">300 000 грн <span style="font-size:.8rem;font-weight:600;opacity:.9">без ПДВ · 6 заходів</span></div>
-        <ul><li>Статус генерального партнера в комунікаціях</li><li>Логотип на всіх візуалах проєкту</li><li>Стенд і презентація продукції на заходах</li><li>Згадка зі сцени та у пострелізах на сайті й у соцмережах</li><li>Брендована фотозона та активності для гостей</li></ul>
+    <form class="book reveal" id="partnerForm" style="max-width:640px;margin:26px auto 0">
+      <div><label for="pName">ПІБ <span style="color:var(--coral)">*</span></label><input id="pName" name="name" required placeholder="Прізвище, імʼя, по батькові"></div>
+      <div class="f-row">
+        <div><label for="pCompany">Компанія <span style="color:var(--coral)">*</span></label><input id="pCompany" name="company" required placeholder="Назва компанії"></div>
+        <div><label for="pPhone">Телефон <span style="color:var(--coral)">*</span></label><input id="pPhone" name="phone" type="tel" required placeholder="+380…"></div>
       </div>
-      <div class="tier ev reveal">
-        <h4>Партнер заходу</h4><div class="price">20 000 грн <span style="font-size:.8rem;font-weight:600;opacity:.9">без ПДВ · 1 захід</span></div>
-        <ul><li>Статус партнера заходу в комунікаціях</li><li>Презентація продукції на події</li><li>Подарунки та сертифікати учасникам</li><li>Згадка зі сцени й у пострелізі</li><li>Брендована фотозона</li></ul>
-      </div>
-    </div>
+      <div><label for="pEmail">Імейл <span style="color:var(--coral)">*</span></label><input id="pEmail" name="email" type="email" required placeholder="you@company.com"></div>
+      <div><label for="pMsg">Коментарі</label><textarea id="pMsg" name="msg" placeholder="Як хотіли б долучитися (необовʼязково)"></textarea></div>
+      <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Надіслати заявку на партнерство</button>
+      <p class="form-note">Поля з <span style="color:var(--coral)">*</span> — обовʼязкові. Ми звʼяжемося з вами щодо партнерства.</p>
+    </form>
 
     <div class="davai-contacts reveal">
       <div class="c"><b>З питань партнерства:</b></div>
@@ -934,6 +935,14 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
     const f=e.target;
     const body=`Імʼя: ${f.name.value}%0D%0AТелефон: ${f.phone.value}%0D%0AКому потрібна допомога: ${f.who.value}%0D%0AФахівець: ${f.spec.value}%0D%0AЗапит: ${f.msg.value}`;
     window.location.href=`mailto:info@tvoya-opora.org.ua?subject=${encodeURIComponent('Заявка з сайту центру')}&body=${body}`;
+  });
+
+  const pf=document.getElementById('partnerForm');
+  if(pf) pf.addEventListener('submit',e=>{
+    e.preventDefault();
+    const f=e.target;
+    const body=`ПІБ: ${f.name.value}%0D%0AКомпанія: ${f.company.value}%0D%0AІмейл: ${f.email.value}%0D%0AТелефон: ${f.phone.value}%0D%0AКоментарі: ${f.msg.value}`;
+    window.location.href=`mailto:tatarchuklera@tvoya-opora.org.ua?subject=${encodeURIComponent('Заявка на партнерство — Давай на ти')}&body=${body}`;
   });
 </script>
 </body>

@@ -60,7 +60,7 @@ header.scrolled{box-shadow:0 10px 30px -20px rgba(43,43,58,.4)}
 img.swallow,img.big-swallow{object-fit:contain}
 .brand-txt small{display:block;font-weight:600;font-size:.6rem;letter-spacing:.04em;color:var(--muted);line-height:1.25;text-transform:uppercase}
 .brand-txt b{font-size:.8rem;letter-spacing:.02em}
-.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links{display:flex;gap:18px;align-items:center}
 .nav-links a{font-weight:600;font-size:.9rem;color:var(--ink);opacity:.78;transition:opacity .15s}
 .nav-links a:hover{opacity:1}
 .nav-cta{display:flex;align-items:center;gap:12px;flex:none}
@@ -77,12 +77,12 @@ img.swallow,img.big-swallow{object-fit:contain}
 .badge-free .dot{width:34px;height:34px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;flex:none}
 .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
 .hero-art{position:relative;aspect-ratio:1/1;display:grid;place-items:center}
-.hero-card{position:relative;width:100%;border-radius:32px;overflow:hidden;background:linear-gradient(150deg,var(--violet),var(--violet-light));box-shadow:var(--shadow);aspect-ratio:4/4.4;display:grid;place-items:center;padding:30px}
+.hero-card{position:relative;width:100%;border-radius:32px;background:linear-gradient(150deg,var(--violet),var(--violet-light));box-shadow:var(--shadow);aspect-ratio:4/4.4;display:grid;place-items:center;padding:30px}
 .hero-card .big-swallow{width:78%;filter:drop-shadow(0 20px 30px rgba(0,0,0,.18))}
 .float{position:absolute;background:#fff;border-radius:18px;box-shadow:var(--shadow-sm);padding:14px 18px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:.86rem;animation:floaty 5s ease-in-out infinite}
 .float .num{font-size:1.5rem;font-weight:800;line-height:1}
-.float.f1{top:6%;left:-6%}
-.float.f2{bottom:10%;right:-7%;animation-delay:1.5s}
+.float.f1{top:4%;left:-2%}
+.float.f2{bottom:8%;right:-2%;animation-delay:1.5s}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;z-index:0;pointer-events:none}
 
@@ -342,8 +342,13 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
 
+@media(max-width:1180px){
+  .nav-links{position:fixed;inset:72px 0 auto 0;background:#fff;flex-direction:column;padding:22px;gap:14px;box-shadow:var(--shadow);transform:translateY(-130%);transition:transform .3s;border-bottom:1px solid rgba(0,0,0,.06);max-height:80vh;overflow:auto;align-items:stretch}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.02rem;opacity:1}
+  .burger{display:flex}
+}
 @media(max-width:1000px){
-  .nav-links{gap:16px}
   .team-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:900px){
@@ -352,11 +357,6 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
   .float.f1{left:0}.float.f2{right:0}
   .stats-grid,.steps{grid-template-columns:repeat(2,1fr)}
   .cards,.aud-grid,.posts,.story-grid,.mlist{grid-template-columns:1fr 1fr}
-  .nav-links{position:fixed;inset:72px 0 auto 0;background:#fff;flex-direction:column;padding:22px;gap:14px;box-shadow:var(--shadow);transform:translateY(-130%);transition:transform .3s;border-bottom:1px solid rgba(0,0,0,.06);max-height:80vh;overflow:auto}
-  .nav-links.open{transform:none}
-  .nav-links a{font-size:1.02rem;opacity:1}
-  .burger{display:flex}
-  .nav-cta .btn-ghost{display:none}
 }
 @media(max-width:560px){
   .stats-grid,.cards,.aud-grid,.posts,.story-grid,.mlist,.team-grid,.steps{grid-template-columns:1fr}
@@ -387,7 +387,6 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
       <a href="#contacts">Контакти</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-ghost" href="tel:+380671111800">Подзвонити</a>
       <a class="btn btn-primary" href="#booking">Записатися</a>
       <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
     </div>

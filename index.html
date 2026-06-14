@@ -304,6 +304,16 @@ form.book textarea{resize:vertical;min-height:78px}
 .ev-card p{color:var(--muted);font-size:.92rem;flex:1}
 .ev-card .btn{margin-top:18px;align-self:flex-start}
 
+/* COMPLETED COURSE */
+.course-card{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:#fff;border:1px solid rgba(43,43,58,.08);border-radius:var(--radius);padding:24px;margin-top:30px;box-shadow:var(--shadow-sm)}
+.course-img{width:200px;aspect-ratio:4/5;object-fit:cover;border-radius:16px;display:block}
+.course-body .done-badge{display:inline-block;background:var(--violet-light);color:var(--ink);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;padding:5px 12px;border-radius:100px;margin-bottom:10px}
+.course-body h3{font-size:1.2rem;margin-bottom:8px}
+.course-body p{color:var(--muted)}
+.course-note{margin-top:10px;font-size:.9rem}
+.course-note a{color:var(--coral);font-weight:700}
+@media(max-width:640px){.course-card{grid-template-columns:1fr}.course-img{width:100%;max-width:260px;margin:0 auto}}
+
 /* DAVAI NA TY */
 .davai{padding:var(--space) 0;background:linear-gradient(160deg,#f4f3fb,var(--bg-soft))}
 .davai-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
@@ -667,7 +677,7 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
       <div class="sch-row"><span class="day">П'ятниця</span><span class="ev"><b>Психоедукація: як говорити з дитиною про війну</b><small>11:00 — 12:30</small></span><span class="who">Дорослі</span></div>
       <div class="sch-row"><span class="day">Субота</span><span class="ev"><b>Сімейний день: ігри та майстерні</b><small>11:00 — 14:00</small></span><span class="who">Усі</span></div>
     </div>
-    <p class="sch-note reveal">📌 Розклад орієнтовний і оновлюється щотижня. Актуальні дати й запис — за телефоном або в <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700">Telegram</a>.</p>
+    <p class="sch-note reveal">📌 Розклад орієнтовний і оновлюється щотижня. Запис — за телефоном, актуальні анонси — у <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700">Telegram-каналі</a>.</p>
   </div>
 </section>
 
@@ -697,6 +707,22 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
       </article>
     </div>
     <p class="sch-note reveal">📌 Дати орієнтовні — актуальні анонси в <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700">Telegram</a>. <span style="color:var(--muted)">(розділ наповнюється)</span></p>
+  </div>
+</section>
+
+<!-- COMPLETED COURSE -->
+<section class="vsection" id="course">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Освітні ініціативи</span><h2>Що вже відбулось у центрі</h2></div>
+    <div class="course-card reveal">
+      <img class="course-img" src="assets/guest-buhovska.jpg" alt="Курс з журналістики для ВПО з Юлією Буговською" loading="lazy">
+      <div class="course-body">
+        <span class="done-badge">Курс завершено</span>
+        <h3>Безкоштовний курс з журналістики для ВПО</h3>
+        <p>Офлайн-курс у центрі для дорослих зі статусом ВПО: основи журналістики, робота в різних форматах і перші кроки в медіа. Вела курс Юлія Буговська — журналістка, тележурналістка й редакторка, за підтримки GlobalGiving.</p>
+        <p class="course-note">Стежте за анонсами нових наборів у <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener">Telegram-каналі</a>.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -883,7 +909,7 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
         <a href="https://maps.google.com/?q=Ворзель,+Ворзельська,+24" target="_blank" rel="noopener"><span class="ci">📍</span><span><small>Адреса</small>смт Ворзель, вул. Ворзельська, 24</span></a>
         <div><span class="ci">🕘</span><span><small>Години роботи</small>Пн–Пт 9:00–18:00 · Сб 10:00–18:00 · Нд вихідний</span></div>
         <a href="tel:+380671111800"><span class="ci">📞</span><span><small>Запис на консультацію</small>+38 (067) 111 18 00</span></a>
-        <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener"><span class="ci">✈️</span><span><small>Написати нам — Telegram</small>@mental_center_tvoya_opora</span></a>
+        <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener"><span class="ci">✈️</span><span><small>Telegram-канал — усі новини</small>@mental_center_tvoya_opora</span></a>
         <a href="tel:+380443210900"><span class="ci">☎️</span><span><small>Приймальня</small>+38 (044) 321 09 00</span></a>
         <a href="mailto:info@tvoya-opora.org.ua"><span class="ci">✉️</span><span><small>Пошта</small>info@tvoya-opora.org.ua</span></a>
         <a href="https://www.instagram.com/mental_center_tvoya_opora/" target="_blank" rel="noopener"><span class="ci">📸</span><span><small>Instagram</small>@mental_center_tvoya_opora</span></a>

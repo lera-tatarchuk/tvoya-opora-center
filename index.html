@@ -279,6 +279,17 @@ form.book textarea{resize:vertical;min-height:78px}
 .bucha-grid .pmeta b{color:var(--violet)}
 @media(max-width:900px){.bucha-grid{grid-template-columns:1fr}}
 
+/* BEFORE / AFTER */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+.ba{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);aspect-ratio:4/3;background:#ece9e2}
+.ba img{width:100%;height:100%;object-fit:cover;display:block}
+.ba .ba-label{position:absolute;top:14px;left:14px;color:#fff;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:100px;background:rgba(43,43,58,.82)}
+.ba.now .ba-label{background:var(--coral)}
+.ba-caption{margin-top:18px;color:var(--muted);text-align:center;font-weight:500}
+.play-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.play-gallery img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;display:block;box-shadow:var(--shadow-sm)}
+@media(max-width:640px){.ba-grid{grid-template-columns:1fr}.play-gallery{grid-template-columns:1fr 1fr}}
+
 /* EVENTS ANNOUNCEMENTS */
 .events{padding:var(--space) 0}
 .ev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
@@ -307,7 +318,7 @@ form.book textarea{resize:vertical;min-height:78px}
 .guests{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:22px}
 .guest{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);text-align:center;transition:transform .2s,box-shadow .2s}
 .guest:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.guest .ph{aspect-ratio:1/1;background:linear-gradient(150deg,var(--violet),var(--violet-light));display:grid;place-items:center;font-size:2.4rem;font-weight:800;color:#fff;overflow:hidden}
+.guest .ph{aspect-ratio:4/5;background:linear-gradient(150deg,var(--violet),var(--violet-light));display:grid;place-items:center;font-size:2.4rem;font-weight:800;color:#fff;overflow:hidden}
 .guest .ph img{width:100%;height:100%;object-fit:cover}
 .guest .gname{font-weight:800;padding:16px 14px 4px;font-size:1rem}
 .guest .grole{padding:0 14px 18px;color:var(--muted);font-size:.82rem;font-weight:600}
@@ -590,6 +601,18 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
   </div>
 </section>
 
+<!-- CENTER BEFORE / AFTER -->
+<section class="vsection" id="history">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Історія центру</span><h2>Від руїни — до простору підтримки</h2>
+      <p class="lead" style="margin-top:12px">Будівлю центру пошкодили під час повномасштабного вторгнення росії. Сьогодні тут — місце, де родини віднаходять опору.</p></div>
+    <div class="ba-grid">
+      <div class="ba reveal"><span class="ba-label">2022 — після обстрілів</span><img src="assets/center-2022.jpg" alt="Зруйнована будівля центру, 2022 рік" loading="lazy"></div>
+      <div class="ba now reveal"><span class="ba-label">Сьогодні</span><img src="assets/center-now.jpg" alt="Відновлений Сімейний центр сьогодні" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
 <!-- FLOORS -->
 <section class="floors" id="floors">
   <div class="wrap">
@@ -617,6 +640,17 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
           та за сприяння <b>Бучанської міської ради</b>.
         </div>
       </div>
+    </div>
+
+    <h3 class="guests-h reveal" style="margin-top:44px">Майданчик: було → стало<small>Простір оновили за британськими стандартами</small></h3>
+    <div class="ba-grid">
+      <div class="ba reveal"><span class="ba-label">Було</span><img src="assets/play-before-1.jpg" alt="Старий майданчик до оновлення" loading="lazy"></div>
+      <div class="ba now reveal"><span class="ba-label">Стало</span><img src="assets/play-after-1.jpg" alt="Новий інклюзивний майданчик у Бучі" loading="lazy"></div>
+    </div>
+    <div class="play-gallery reveal">
+      <img src="assets/play-after-2.jpg" alt="Інклюзивний майданчик у Бучі" loading="lazy">
+      <img src="assets/play-after-3.jpg" alt="Діти на новому майданчику" loading="lazy">
+      <img src="assets/play-after-4.jpg" alt="Новий ігровий простір у Бучі" loading="lazy">
     </div>
   </div>
 </section>
@@ -687,13 +721,12 @@ footer{background:var(--ink);color:#fff;padding:52px 0 32px}
     <h3 class="guests-h reveal">Гості, що вже були<small>Реальні зустрічі, якими надихалися наші підлітки</small></h3>
     <!-- Щоб додати гостя — скопіюйте блок .guest і змініть підпис (та фото в .ph, якщо є). -->
     <div class="guests">
+      <div class="guest reveal"><div class="ph"><img src="assets/guest-leonov.jpg" alt="Макс Леонов" loading="lazy"></div><div class="gname">Макс Леонов</div><div class="grole">Переможець «Танців з зірками» · 19 січня, Ірпінь</div></div>
+      <div class="guest reveal"><div class="ph"><img src="assets/guest-tolstikova.jpg" alt="Катерина Толстікова" loading="lazy"></div><div class="gname">Катерина Толстікова</div><div class="grole">Лікарка-дієтологиня, дієтолог О. Усика · 16 лютого</div></div>
+      <div class="guest reveal"><div class="ph"><img src="assets/guest-mandziuk.jpg" alt="Мирослава Мандзюк" loading="lazy"></div><div class="gname">Мирослава Мандзюк</div><div class="grole">Телеведуча, авторка YouTube-шоу · 8 квітня</div></div>
+      <div class="guest reveal"><div class="ph"><img src="assets/guest-tur-tanchynets.jpg" alt="Наталія Тур і Юліана Танчинець" loading="lazy"></div><div class="gname">Наталія Тур + Юліана Танчинець</div><div class="grole">Радіо «Люкс ФМ» × PR «БЕЗ ОБМЕЖЕНЬ» · 16 квітня</div></div>
       <div class="guest reveal"><div class="ph"><img src="assets/diana-gloster.png" alt="DIANA GLOSTER" loading="lazy"></div><div class="gname">DIANA GLOSTER</div><div class="grole">Українська співачка · 17 вересня 2025</div></div>
       <div class="guest reveal"><div class="ph"><img src="assets/yana-honcharenko.png" alt="Яна Гончаренко" loading="lazy"></div><div class="gname">Яна Гончаренко</div><div class="grole">Запрошена гостя · 22 грудня 2025</div></div>
-      <div class="guest reveal"><div class="ph">МЛ</div><div class="gname">Макс Леонов</div><div class="grole">Переможець «Танців з зірками» · 19 січня, Ірпінь</div></div>
-      <div class="guest reveal"><div class="ph" style="background:linear-gradient(150deg,var(--coral),var(--coral-light))">КТ</div><div class="gname">Катерина Толстікова</div><div class="grole">Лікарка-дієтологиня, дієтолог О. Усика · 16 лютого</div></div>
-      <div class="guest reveal"><div class="ph" style="background:linear-gradient(150deg,var(--gold),var(--yellow))">ММ</div><div class="gname">Мирослава Мандзюк</div><div class="grole">Телеведуча, авторка YouTube-шоу · 8 квітня</div></div>
-      <div class="guest reveal"><div class="ph">НТ</div><div class="gname">Наталія Тур</div><div class="grole">Ведуча радіо «Люкс ФМ» · 16 квітня</div></div>
-      <div class="guest reveal"><div class="ph" style="background:linear-gradient(150deg,var(--coral),var(--coral-light))">ЮТ</div><div class="gname">Юліана Танчинець</div><div class="grole">PR-директорка гурту «БЕЗ ОБМЕЖЕНЬ» · 16 квітня</div></div>
     </div>
 
     <h3 class="guests-h reveal">Стати партнером проєкту<small>Ми постійно шукаємо партнерів, аби підлітки зустрічалися з тими, хто їх надихає</small></h3>

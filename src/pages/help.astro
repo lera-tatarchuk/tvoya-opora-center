@@ -1,0 +1,134 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const articles = (await getCollection('articles')).sort((a, b) => a.data.sort - b.data.sort);
+---
+<Base title="Як отримати допомогу — Сімейний центр «Твоя опора»" description="Як звернутися по безкоштовну допомогу: кроки, хто може отримати допомогу, потрібні документи та форма запису на консультацію.">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Як отримати допомогу</span>
+      <h1>Звернутися можна в момент кризи або коли потрібна підтримка</h1>
+      <p>Консультація, діагностика чи супровід — без направлення, безоплатно. Достатньо вашого запиту.</p>
+    </div>
+  </section>
+
+  <section class="help">
+    <div class="wrap">
+      <div class="steps">
+        <div class="step reveal"><div class="s-num">1</div><h3>Залиште заявку</h3><p>Заповніть форму на сайті або зателефонуйте нам.</p></div>
+        <div class="step reveal"><div class="s-num">2</div><h3>Ми зв'яжемося</h3><p>Уточнимо запит і запишемо на зручний час.</p></div>
+        <div class="step reveal"><div class="s-num">3</div><h3>Перша зустріч</h3><p>Знайомство з фахівцем, оформлення документів, маршрут допомоги.</p></div>
+        <div class="step reveal"><div class="s-num">4</div><h3>Супровід родини</h3><p>Комплексна робота з дитиною та її середовищем — до сталого результату.</p></div>
+      </div>
+
+      <div class="note-free reveal">
+        <span style="font-size:1.6rem">💛</span>
+        <span>Усі послуги центру надаються <b>безоплатно</b>. Звернутися можна без направлення — достатньо вашого запиту.</span>
+      </div>
+
+      <div class="disclose reveal">
+        <details class="box" id="criteria">
+          <summary>Хто може отримати допомогу <span class="chev">▾</span></summary>
+          <div class="box-body">
+            <p style="color:var(--muted);margin-bottom:16px">У межах проєкту ми надаємо допомогу дітям, підліткам і дорослим, що відповідають критеріям, а саме:</p>
+            <ul class="crit-list">
+              <li><span class="b"></span>Дорослі, підлітки та діти, які зазнали негативного впливу війни в Україні</li>
+              <li><span class="b"></span>Родини внутрішньо переміщених осіб (ВПО)</li>
+              <li><span class="b"></span>Сім'ї з дітьми, які опинились у складних життєвих обставинах та перебувають у скрутному матеріальному становищі</li>
+              <li><span class="b"></span>Сім'ї військовослужбовців</li>
+              <li><span class="b"></span>Сім'ї з альтернативними формами виховання: прийомна сім'я, усиновлення, опіка (піклування), дитячий будинок сімейного типу, сім'я патронатного вихователя</li>
+              <li><span class="b"></span>Сім'ї групи ризику, де є загроза інституалізації дітей</li>
+              <li><span class="b"></span>Діти-сироти та діти, позбавлені батьківського піклування</li>
+              <li><span class="b"></span>Діти з особливими освітніми потребами</li>
+              <li><span class="b"></span>Депортовані діти, які були примусово переселені в рф</li>
+              <li><span class="b"></span>Особи з родин цивільних заручників</li>
+              <li><span class="b"></span>Особи, які перебували під окупацією</li>
+              <li><span class="b"></span>Особи, які стали свідками травмуючої події під час війни</li>
+              <li><span class="b"></span>Дорослі та діти, які стали жертвами сексуального, фізичного, психологічного насильства</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="box">
+          <summary>Які документи потрібні <span class="chev">▾</span></summary>
+          <div class="box-body">
+            <p style="color:var(--muted);margin-bottom:16px">Для отримання допомоги знадобляться:</p>
+            <ul class="doc-list">
+              <li>Паспорт та ІПН (РНОКПП) одного з батьків або особи, що їх замінює, чи іншої уповноваженої особи згідно з довіреністю</li>
+              <li>Свідоцтво про народження благоотримувача</li>
+              <li>Документ, що підтверджує пільговий статус благоотримувача або його сім'ї</li>
+              <li>Заява про отримання допомоги</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="hero-actions reveal" style="margin-top:28px">
+        <a class="btn btn-primary" href="#booking">Записатися</a>
+        <a class="btn btn-ghost" href="/services#navigator">Не знаю, до якого фахівця</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="booking">
+    <div class="wrap">
+      <div class="book-box reveal">
+        <div class="book-grid">
+          <div class="intro">
+            <h2>Записатися на консультацію</h2>
+            <p>Залиште заявку — і ми зв'яжемося з вами, щоб уточнити запит і запропонувати зручний час. Усі послуги безкоштовні.</p>
+            <a class="phone" href="tel:+380671111800">📞 +38 (067) 111 18 00</a>
+          </div>
+          <form class="book" id="bookForm">
+            <div>
+              <label for="bName">Ваше ім'я</label>
+              <input id="bName" name="name" required placeholder="Ім'я та прізвище">
+            </div>
+            <div class="f-row">
+              <div><label for="bPhone">Телефон</label><input id="bPhone" name="phone" type="tel" required placeholder="+380…"></div>
+              <div><label for="bWho">Кому потрібна допомога</label>
+                <select id="bWho" name="who"><option>Дитині</option><option>Дорослому</option><option>Усій родині</option></select>
+              </div>
+            </div>
+            <div>
+              <label for="bSpec">Фахівець (за потреби)</label>
+              <select id="bSpec" name="spec">
+                <option>Не визначився(лась)</option><option>Психолог</option><option>Логопед</option><option>Дефектолог</option><option>Нейропсихолог</option><option>Юрист</option><option>Фахівець з працевлаштування</option>
+              </select>
+            </div>
+            <div>
+              <label for="bMsg">Коротко про запит</label>
+              <textarea id="bMsg" name="msg" placeholder="Що вас турбує або з чим потрібна допомога"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Надіслати заявку</button>
+            <p class="form-note">Натискаючи «Надіслати», ви погоджуєтесь, що ми зв'яжемося з вами щодо запиту. Дані не передаються третім особам.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal" style="text-align:center;margin:0 auto"><span class="eyebrow">Питання та відповіді</span><h2>Часті запитання</h2></div>
+      <div class="faq-list">
+        <details class="box reveal"><summary>Скільки коштують послуги центру? <span class="chev">▾</span></summary><div class="box-body" style="color:var(--muted)">Усі послуги центру надаються повністю безоплатно для дітей та їхніх родин.</div></details>
+        <details class="box reveal"><summary>Чи потрібне направлення, щоб звернутися? <span class="chev">▾</span></summary><div class="box-body" style="color:var(--muted)">Ні. Достатньо вашого запиту — залиште заявку на сайті або зателефонуйте. Перелік документів для оформлення наведено вище.</div></details>
+        <details class="box reveal"><summary>Хто може отримати допомогу? <span class="chev">▾</span></summary><div class="box-body" style="color:var(--muted)">Усі родини, що відповідають критеріям проєкту — повний перелік вище. Усі послуги безоплатні: платних послуг ми не надаємо нікому.</div></details>
+        <details class="box reveal"><summary>Чи можна прийти всією сім'єю? <span class="chev">▾</span></summary><div class="box-body" style="color:var(--muted)">Так — і ми це вітаємо. Одиниця нашої допомоги саме сім'я: поки дорослі на консультації, діти займаються зі спеціалістами або відпочивають у сенсорній кімнаті.</div></details>
+        <details class="box reveal"><summary>Де ви знаходитесь? <span class="chev">▾</span></summary><div class="box-body" style="color:var(--muted)">смт Ворзель, вул. Ворзельська, 24. Карта — у розділі «Контакти».</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">Корисні статті</span><h2>Матеріали для батьків, підлітків і дорослих</h2></div>
+      <div class="posts">
+        {articles.map((a) => (
+          <article class="post reveal"><div class={`cover ${a.data.cover}`}>{a.data.icon}</div><div class="pbody"><div class="cat">{a.data.category}</div><h3>{a.data.title}</h3><p>{a.data.excerpt}</p></div></article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

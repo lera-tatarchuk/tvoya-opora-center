@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const MONTHS = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
+const colorVar = { violet: 'var(--violet)', coral: 'var(--coral)', gold: 'var(--gold)' };
+
+const events = (await getCollection('events')).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const guests = (await getCollection('guests')).sort((a, b) => a.data.sort - b.data.sort);
+const initials = (name) => name.split(/[\s+]+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('');
+---
+<Base title="Події та «Давай на ти» — Сімейний центр «Твоя опора»" description="Анонси заходів і груп центру, розклад на тиждень та спецпроєкт для підлітків «Давай на ти» із зірковими гостями.">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Події та проєкти</span>
+      <h1>Анонси, розклад і «Давай на ти»</h1>
+      <p>Заходи для дітей, підлітків і дорослих. Реєструйтеся заздалегідь — кількість місць обмежена.</p>
+    </div>
+  </section>
+
+  <section class="events" id="events">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">Анонси подій</span><h2>Що відбуватиметься найближчим часом</h2></div>
+      <div class="ev-grid">
+        {events.map((e) => (
+          <article class="ev-card reveal">
+            <div class="ev-top" style={`background:${colorVar[e.data.color]}`}>
+              <span class="date">{e.data.date.getUTCDate()}<small>{MONTHS[e.data.date.getUTCMonth()]}</small></span>
+              <span class="pill">{e.data.audience}</span>
+            </div>
+            <div class="ev-body">
+              <h3>{e.data.title}</h3>
+              <p>{e.data.description}</p>
+              <a class="btn btn-primary" href={e.data.formUrl || '/help#booking'} target={e.data.formUrl ? '_blank' : null} rel={e.data.formUrl ? 'noopener' : null}>Зареєструватися</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="sch-note reveal">📌 Актуальні анонси — у <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700">Telegram-каналі</a>.</p>
+    </div>
+  </section>
+
+  <section class="schedule" id="schedule">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">Розклад заходів і груп</span><h2>Що відбувається в центрі цього тижня</h2></div>
+      <div class="sch-table reveal">
+        <div class="sch-row"><span class="day">Понеділок</span><span class="ev"><b>Група підтримки для батьків</b><small>10:00 — 11:30</small></span><span class="who">Дорослі</span></div>
+        <div class="sch-row"><span class="day">Вівторок</span><span class="ev"><b>Сенсорні заняття для малечі</b><small>11:00 — 12:00</small></span><span class="who">Діти 3–6</span></div>
+        <div class="sch-row"><span class="day">Середа</span><span class="ev"><b>Тренінг: фінансова грамотність</b><small>15:00 — 17:00</small></span><span class="who">Родини</span></div>
+        <div class="sch-row"><span class="day">Четвер</span><span class="ev"><b>Арттерапевтична група для підлітків</b><small>16:00 — 17:30</small></span><span class="who">Підлітки</span></div>
+        <div class="sch-row"><span class="day">П'ятниця</span><span class="ev"><b>Психоедукація: як говорити з дитиною про війну</b><small>11:00 — 12:30</small></span><span class="who">Дорослі</span></div>
+        <div class="sch-row"><span class="day">Субота</span><span class="ev"><b>Сімейний день: ігри та майстерні</b><small>11:00 — 14:00</small></span><span class="who">Усі</span></div>
+      </div>
+      <p class="sch-note reveal">📌 Розклад орієнтовний і оновлюється щотижня. Запис — за телефоном, актуальні анонси — у <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700">Telegram-каналі</a>.</p>
+    </div>
+  </section>
+
+  <section class="davai" id="davai">
+    <div class="wrap">
+      <div class="davai-hero">
+        <div class="reveal">
+          <span class="tag">Спецпроєкт</span>
+          <h2>«<b>Давай на ти</b>»</h2>
+          <p class="lead" style="margin-top:14px">Серія зустрічей, де підлітки вільно спілкуються із зірковими гостями. У форматі невимушеної бесіди зірки діляться особистим досвідом подолання труднощів, історіями успіху та інсайтами — щоб надихати молодь вірити у власні сили.</p>
+        </div>
+        <ul class="davai-format reveal">
+          <li><span>—</span>Камерна дискусія гостя з групою підлітків (15–20 осіб), можливий формат на 50–100.</li>
+          <li><span>—</span>Вступне слово ведучого, історія гостя та майстерклас.</li>
+          <li><span>—</span>Гість розповідає про свій шлях: дитинство, мрії, випробування та перемоги.</li>
+          <li><span>—</span>Відкритий мікрофон: підлітки питають про що завгодно — від особистого до кар'єри.</li>
+          <li><span>—</span>Діалог на рівних: формат «ти» створює атмосферу довіри й відкритості.</li>
+        </ul>
+      </div>
+
+      <h3 class="guests-h reveal">Гості, що вже були<small>Реальні зустрічі, якими надихалися наші підлітки</small></h3>
+      <div class="guests">
+        {guests.map((g) => (
+          <div class={`guest reveal${g.data.upcoming ? ' soon' : ''}`}>
+            <div class="ph">{g.data.photo ? <img src={g.data.photo} alt={g.data.name} loading="lazy" /> : initials(g.data.name)}</div>
+            <div class="gname">{g.data.name}</div>
+            <div class="grole">{g.data.role}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="guests-h reveal">Стати партнером проєкту<small>Ми постійно шукаємо партнерів, аби підлітки зустрічалися з тими, хто їх надихає</small></h3>
+      <form class="book reveal" id="partnerForm" style="max-width:640px;margin:26px auto 0">
+        <div><label for="pName">ПІБ <span style="color:var(--coral)">*</span></label><input id="pName" name="name" required placeholder="Прізвище, імʼя, по батькові"></div>
+        <div class="f-row">
+          <div><label for="pCompany">Компанія <span style="color:var(--coral)">*</span></label><input id="pCompany" name="company" required placeholder="Назва компанії"></div>
+          <div><label for="pPhone">Телефон <span style="color:var(--coral)">*</span></label><input id="pPhone" name="phone" type="tel" required placeholder="+380…"></div>
+        </div>
+        <div><label for="pEmail">Імейл <span style="color:var(--coral)">*</span></label><input id="pEmail" name="email" type="email" required placeholder="you@company.com"></div>
+        <div><label for="pMsg">Коментарі</label><textarea id="pMsg" name="msg" placeholder="Як хотіли б долучитися (необовʼязково)"></textarea></div>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Надіслати заявку на партнерство</button>
+        <p class="form-note">Поля з <span style="color:var(--coral)">*</span> — обовʼязкові. Ми звʼяжемося з вами щодо партнерства.</p>
+      </form>
+
+      <div class="davai-contacts reveal">
+        <div class="c"><b>З питань партнерства:</b></div>
+        <div class="c">Валерія Татарчук<br><a href="tel:+380675490293">+38 067 549 02 93</a><br><a href="mailto:tatarchuklera@tvoya-opora.org.ua">tatarchuklera@tvoya-opora.org.ua</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsection" id="course">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">Освітні ініціативи</span><h2>Що вже відбулось у центрі</h2></div>
+      <div class="course-card reveal">
+        <img class="course-img" src="/assets/guest-buhovska.jpg" alt="Курс з журналістики для ВПО з Юлією Буговською" loading="lazy">
+        <div class="course-body">
+          <span class="done-badge">Курс завершено</span>
+          <h3>Безкоштовний курс з журналістики для ВПО</h3>
+          <p>Офлайн-курс у центрі для дорослих зі статусом ВПО: основи журналістики, робота в різних форматах і перші кроки в медіа. Вела курс Юлія Буговська — журналістка, тележурналістка й редакторка, за підтримки GlobalGiving.</p>
+          <p class="course-note">Стежте за анонсами нових наборів у <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener">Telegram-каналі</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

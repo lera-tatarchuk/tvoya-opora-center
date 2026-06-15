@@ -1,0 +1,68 @@
+backend:
+  name: github
+  repo: lera-tatarchuk/tvoya-opora-center
+  branch: main
+
+media_folder: "public/assets"
+public_folder: "/assets"
+
+locale: uk
+
+collections:
+  - name: events
+    label: "Події (анонси)"
+    label_singular: "Подію"
+    folder: "src/content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: "Назва події", widget: string }
+      - { name: date, label: "Дата", widget: datetime, date_format: "DD.MM.YYYY", time_format: false, picker_utc: true }
+      - { name: audience, label: "Для кого", widget: string, default: "Усі", hint: "Напр.: Підлітки, Дорослі, Родини, Усі" }
+      - { name: color, label: "Колір картки", widget: select, options: ["violet", "coral", "gold"], default: "violet" }
+      - { name: description, label: "Опис", widget: text }
+      - { name: formUrl, label: "Посилання на Google Форму реєстрації", widget: string, required: false, hint: "Якщо порожньо — кнопка веде на загальну форму запису" }
+
+  - name: guests
+    label: "Гості «Давай на ти»"
+    label_singular: "Гостя"
+    folder: "src/content/guests"
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: name, label: "Імʼя гостя", widget: string }
+      - { name: role, label: "Хто це / дата", widget: string, hint: "Напр.: Українська співачка · 17 вересня 2025" }
+      - { name: photo, label: "Фото / макет", widget: image, required: false }
+      - { name: sort, label: "Порядок (менше — вище)", widget: number, default: 100, value_type: int }
+      - { name: upcoming, label: "Анонс (позначка «Незабаром»)", widget: boolean, default: false }
+
+  - name: articles
+    label: "Статті"
+    label_singular: "Статтю"
+    folder: "src/content/articles"
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: "Заголовок", widget: string }
+      - { name: category, label: "Категорія", widget: string, default: "Корисне" }
+      - { name: excerpt, label: "Короткий опис", widget: text }
+      - { name: icon, label: "Емодзі обкладинки", widget: string, default: "📄" }
+      - { name: cover, label: "Колір обкладинки", widget: select, options: ["c-c", "c-v", "c-y"], default: "c-c" }
+      - { name: sort, label: "Порядок (менше — вище)", widget: number, default: 100, value_type: int }
+      - { name: body, label: "Текст статті (необовʼязково)", widget: markdown, required: false }
+
+  - name: stories
+    label: "Історії родин"
+    label_singular: "Історію"
+    folder: "src/content/stories"
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: quote, label: "Відгук / історія", widget: text }
+      - { name: author, label: "Підпис (без імені)", widget: string, hint: "Напр.: мама, ВПО з Бучанського району" }
+      - { name: sort, label: "Порядок (менше — вище)", widget: number, default: 100, value_type: int }

@@ -1,0 +1,29 @@
+---
+const path = (Astro.url.pathname.replace(/\/+$/, '') || '/');
+const links = [
+  { href: '/', label: 'Головна' },
+  { href: '/about', label: 'Про центр' },
+  { href: '/services', label: 'Послуги' },
+  { href: '/help', label: 'Як отримати' },
+  { href: '/events', label: 'Події' },
+  { href: '/support', label: 'Підтримати' },
+  { href: '/contacts', label: 'Контакти' },
+];
+---
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Сімейний центр ментального благополуччя Твоя опора">
+      <img class="swallow" src="/assets/swallow.png" alt="Ластівка — символ Сімейного центру «Твоя опора»">
+      <span class="brand-txt"><small>Сімейний центр</small><b>МЕНТАЛЬНОГО БЛАГОПОЛУЧЧЯ</b></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      {links.map((l) => (
+        <a href={l.href} class={path === l.href ? 'active' : ''}>{l.label}</a>
+      ))}
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="/help#booking">Записатися</a>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>

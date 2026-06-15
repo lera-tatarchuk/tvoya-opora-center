@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const articles = (await getCollection('articles')).sort((a, b) => a.data.sort - b.data.sort);
+---
+<Base title="Простір знань — статті центру «Твоя опора»" description="Корисні матеріали для батьків, підлітків і дорослих: техніки самодопомоги, як говорити з дитиною про складне, ознаки, що варто звернутися по підтримку.">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Простір знань</span>
+      <h1>Матеріали, що підтримують</h1>
+      <p>Прості й практичні поради для батьків, підлітків і дорослих — про турботу про себе та близьких.</p>
+    </div>
+  </section>
+
+  <section class="blog">
+    <div class="wrap">
+      <div class="posts">
+        {articles.map((a) => (
+          <article class="post reveal"><div class={`cover ${a.data.cover}`}>{a.data.icon}</div><div class="pbody"><div class="cat">{a.data.category}</div><h3>{a.data.title}</h3><p>{a.data.excerpt}</p></div></article>
+        ))}
+      </div>
+      <p class="sch-note reveal" style="text-align:center">Розділ наповнюється новими матеріалами.</p>
+    </div>
+  </section>
+</Base>

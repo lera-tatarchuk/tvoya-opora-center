@@ -4,16 +4,13 @@ import { getCollection } from 'astro:content';
 
 const MONTHS = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
 const colorVar = { violet: 'var(--violet)', coral: 'var(--coral)', gold: 'var(--gold)' };
-
 const events = (await getCollection('events')).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
-const guests = (await getCollection('guests')).sort((a, b) => a.data.sort - b.data.sort);
-const initials = (name) => name.split(/[\s+]+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('');
 ---
-<Base title="Події та «Давай на ти» — Сімейний центр «Твоя опора»" description="Анонси заходів і груп центру, розклад на тиждень та спецпроєкт для підлітків «Давай на ти» із зірковими гостями.">
+<Base title="Події та розклад — Сімейний центр «Твоя опора»" description="Анонси заходів і груп центру, розклад на тиждень та завершені освітні ініціативи.">
   <section class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">Події та проєкти</span>
-      <h1>Анонси, розклад і «Давай на ти»</h1>
+      <span class="eyebrow">Події та заходи</span>
+      <h1>Анонси й розклад центру</h1>
       <p>Заходи для дітей, підлітків і дорослих. Реєструйтеся заздалегідь — кількість місць обмежена.</p>
     </div>
   </section>
@@ -52,54 +49,6 @@ const initials = (name) => name.split(/[\s+]+/).filter(Boolean).slice(0, 2).map(
         <div class="sch-row"><span class="day">Субота</span><span class="ev"><b>Сімейний день: ігри та майстерні</b><small>11:00 — 14:00</small></span><span class="who">Усі</span></div>
       </div>
       <p class="sch-note reveal">📌 Розклад орієнтовний і оновлюється щотижня. Запис — за телефоном, актуальні анонси — у <a href="https://t.me/mental_center_tvoya_opora" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700">Telegram-каналі</a>.</p>
-    </div>
-  </section>
-
-  <section class="davai" id="davai">
-    <div class="wrap">
-      <div class="davai-hero">
-        <div class="reveal">
-          <span class="tag">Спецпроєкт</span>
-          <h2>«<b>Давай на ти</b>»</h2>
-          <p class="lead" style="margin-top:14px">Серія зустрічей, де підлітки вільно спілкуються із зірковими гостями. У форматі невимушеної бесіди зірки діляться особистим досвідом подолання труднощів, історіями успіху та інсайтами — щоб надихати молодь вірити у власні сили.</p>
-        </div>
-        <ul class="davai-format reveal">
-          <li><span>—</span>Камерна дискусія гостя з групою підлітків (15–20 осіб), можливий формат на 50–100.</li>
-          <li><span>—</span>Вступне слово ведучого, історія гостя та майстерклас.</li>
-          <li><span>—</span>Гість розповідає про свій шлях: дитинство, мрії, випробування та перемоги.</li>
-          <li><span>—</span>Відкритий мікрофон: підлітки питають про що завгодно — від особистого до кар'єри.</li>
-          <li><span>—</span>Діалог на рівних: формат «ти» створює атмосферу довіри й відкритості.</li>
-        </ul>
-      </div>
-
-      <h3 class="guests-h reveal">Гості, що вже були<small>Реальні зустрічі, якими надихалися наші підлітки</small></h3>
-      <div class="guests">
-        {guests.map((g) => (
-          <div class={`guest reveal${g.data.upcoming ? ' soon' : ''}`}>
-            <div class="ph">{g.data.photo ? <img src={g.data.photo} alt={g.data.name} loading="lazy" /> : initials(g.data.name)}</div>
-            <div class="gname">{g.data.name}</div>
-            <div class="grole">{g.data.role}</div>
-          </div>
-        ))}
-      </div>
-
-      <h3 class="guests-h reveal">Стати партнером проєкту<small>Ми постійно шукаємо партнерів, аби підлітки зустрічалися з тими, хто їх надихає</small></h3>
-      <form class="book reveal" id="partnerForm" style="max-width:640px;margin:26px auto 0">
-        <div><label for="pName">ПІБ <span style="color:var(--coral)">*</span></label><input id="pName" name="name" required placeholder="Прізвище, імʼя, по батькові"></div>
-        <div class="f-row">
-          <div><label for="pCompany">Компанія <span style="color:var(--coral)">*</span></label><input id="pCompany" name="company" required placeholder="Назва компанії"></div>
-          <div><label for="pPhone">Телефон <span style="color:var(--coral)">*</span></label><input id="pPhone" name="phone" type="tel" required placeholder="+380…"></div>
-        </div>
-        <div><label for="pEmail">Імейл <span style="color:var(--coral)">*</span></label><input id="pEmail" name="email" type="email" required placeholder="you@company.com"></div>
-        <div><label for="pMsg">Коментарі</label><textarea id="pMsg" name="msg" placeholder="Як хотіли б долучитися (необовʼязково)"></textarea></div>
-        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Надіслати заявку на партнерство</button>
-        <p class="form-note">Поля з <span style="color:var(--coral)">*</span> — обовʼязкові. Ми звʼяжемося з вами щодо партнерства.</p>
-      </form>
-
-      <div class="davai-contacts reveal">
-        <div class="c"><b>З питань партнерства:</b></div>
-        <div class="c">Валерія Татарчук<br><a href="tel:+380675490293">+38 067 549 02 93</a><br><a href="mailto:tatarchuklera@tvoya-opora.org.ua">tatarchuklera@tvoya-opora.org.ua</a></div>
-      </div>
     </div>
   </section>
 

@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const guests = (await getCollection('guests')).sort((a, b) => a.data.sort - b.data.sort);
+const initials = (name) => name.split(/[\s+]+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('');
+---
+<Base title="«Давай на ти» — спецпроєкт для підлітків | Твоя опора" description="Серія зустрічей, де підлітки спілкуються із зірковими гостями на рівних. Гості проєкту та можливість стати партнером.">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Спецпроєкт для підлітків</span>
+      <h1>«Давай на ти»</h1>
+      <p>Зустрічі, де підлітки вільно спілкуються із зірковими гостями на рівних — і надихаються вірити у власні сили.</p>
+    </div>
+  </section>
+
+  <section class="davai" id="davai" style="background:none;padding-top:20px">
+    <div class="wrap">
+      <div class="davai-hero">
+        <div class="reveal">
+          <span class="tag">Про проєкт</span>
+          <h2>Щира розмова, що змінює</h2>
+          <p class="lead" style="margin-top:14px">У форматі невимушеної бесіди зірки діляться особистим досвідом подолання труднощів, історіями успіху та інсайтами. Основна мета — показати підліткам, що кожен шлях до успіху унікальний і вартий зусиль.</p>
+        </div>
+        <ul class="davai-format reveal">
+          <li><span>—</span>Камерна дискусія гостя з групою підлітків (15–20 осіб), можливий формат на 50–100.</li>
+          <li><span>—</span>Вступне слово ведучого, історія гостя та майстерклас.</li>
+          <li><span>—</span>Гість розповідає про свій шлях: дитинство, мрії, випробування та перемоги.</li>
+          <li><span>—</span>Відкритий мікрофон: підлітки питають про що завгодно — від особистого до кар'єри.</li>
+          <li><span>—</span>Діалог на рівних: формат «ти» створює атмосферу довіри й відкритості.</li>
+        </ul>
+      </div>
+
+      <h3 class="guests-h reveal">Гості, що вже були<small>Реальні зустрічі, якими надихалися наші підлітки</small></h3>
+      <div class="guests">
+        {guests.map((g) => (
+          <div class={`guest reveal${g.data.upcoming ? ' soon' : ''}`}>
+            <div class="ph">{g.data.photo ? <img src={g.data.photo} alt={g.data.name} loading="lazy" /> : initials(g.data.name)}</div>
+            <div class="gname">{g.data.name}</div>
+            <div class="grole">{g.data.role}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="guests-h reveal">Стати партнером проєкту<small>Ми постійно шукаємо партнерів, аби підлітки зустрічалися з тими, хто їх надихає</small></h3>
+      <form class="book reveal" id="partnerForm" style="max-width:640px;margin:26px auto 0">
+        <div><label for="pName">ПІБ <span style="color:var(--coral)">*</span></label><input id="pName" name="name" required placeholder="Прізвище, імʼя, по батькові"></div>
+        <div class="f-row">
+          <div><label for="pCompany">Компанія <span style="color:var(--coral)">*</span></label><input id="pCompany" name="company" required placeholder="Назва компанії"></div>
+          <div><label for="pPhone">Телефон <span style="color:var(--coral)">*</span></label><input id="pPhone" name="phone" type="tel" required placeholder="+380…"></div>
+        </div>
+        <div><label for="pEmail">Імейл <span style="color:var(--coral)">*</span></label><input id="pEmail" name="email" type="email" required placeholder="you@company.com"></div>
+        <div><label for="pMsg">Коментарі</label><textarea id="pMsg" name="msg" placeholder="Як хотіли б долучитися (необовʼязково)"></textarea></div>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Надіслати заявку на партнерство</button>
+        <p class="form-note">Поля з <span style="color:var(--coral)">*</span> — обовʼязкові. Ми звʼяжемося з вами щодо партнерства.</p>
+      </form>
+
+      <div class="davai-contacts reveal">
+        <div class="c"><b>З питань партнерства:</b></div>
+        <div class="c">Валерія Татарчук<br><a href="tel:+380675490293">+38 067 549 02 93</a><br><a href="mailto:tatarchuklera@tvoya-opora.org.ua">tatarchuklera@tvoya-opora.org.ua</a></div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,7 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCollection } from 'astro:content';
-const articles = (await getCollection('articles')).sort((a, b) => a.data.sort - b.data.sort);
 ---
 <Base title="Як отримати допомогу — Сімейний центр «Твоя опора»" description="Як звернутися по безкоштовну допомогу: кроки, хто може отримати допомогу, потрібні документи та форма запису на консультацію.">
   <section class="page-hero">
@@ -121,14 +119,4 @@ const articles = (await getCollection('articles')).sort((a, b) => a.data.sort - 
     </div>
   </section>
 
-  <section class="blog">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Корисні статті</span><h2>Матеріали для батьків, підлітків і дорослих</h2></div>
-      <div class="posts">
-        {articles.map((a) => (
-          <article class="post reveal"><div class={`cover ${a.data.cover}`}>{a.data.icon}</div><div class="pbody"><div class="cat">{a.data.category}</div><h3>{a.data.title}</h3><p>{a.data.excerpt}</p></div></article>
-        ))}
-      </div>
-    </div>
-  </section>
 </Base>

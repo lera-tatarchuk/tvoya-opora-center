@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 const stories = (await getCollection('stories')).sort((a, b) => a.data.sort - b.data.sort);
+const vacancies = (await getCollection('vacancies')).sort((a, b) => a.data.sort - b.data.sort);
 ---
 <Base title="Про центр — Сімейний центр «Твоя опора»" description="Підхід «одиниця допомоги — сім'я», історія центру до і після, три поверхи турботи та інклюзивний майданчик у Бучі.">
   <section class="page-hero">
@@ -93,6 +94,22 @@ const stories = (await getCollection('stories')).sort((a, b) => a.data.sort - b.
         ))}
       </div>
       <p class="sch-note reveal" style="text-align:center">Імена не вказуємо з поваги до приватності родин.</p>
+    </div>
+  </section>
+
+  <section class="vac" id="vacancies">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">Долучайтеся до команди</span><h2>Вакансії</h2>
+        <p class="lead" style="margin-top:12px">Ми шукаємо небайдужих фахівців, готових бути опорою для родин. Не знайшли свою позицію — надсилайте резюме, ми будемо раді знайомству.</p></div>
+      <div class="vac-list">
+        {vacancies.map((v) => (
+          <div class="vac-item reveal">
+            <div><h3>{v.data.title}</h3><div class="vmeta">{v.data.meta}</div></div>
+            <a class="btn btn-ghost" href={v.data.url || `mailto:info@tvoya-opora.org.ua?subject=${encodeURIComponent('Вакансія: ' + v.data.title)}`} target={v.data.url ? '_blank' : null} rel={v.data.url ? 'noopener' : null}>Відгукнутися</a>
+          </div>
+        ))}
+      </div>
+      <p class="sch-note reveal">Надіслати резюме: <a href="mailto:info@tvoya-opora.org.ua" style="color:var(--coral);font-weight:700">info@tvoya-opora.org.ua</a></p>
     </div>
   </section>
 </Base>

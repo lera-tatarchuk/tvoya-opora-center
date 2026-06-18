@@ -274,7 +274,7 @@ form.book textarea{resize:vertical;min-height:78px}
 /* FESTIVAL BANNER */
 .fest{background:linear-gradient(135deg,var(--violet),var(--coral));color:#fff;border-radius:32px;padding:clamp(30px,5vw,56px);box-shadow:var(--shadow);position:relative;overflow:hidden}
 .fest .eyebrow{color:var(--yellow)}
-.fest h2{font-size:clamp(1.9rem,4.4vw,3rem);color:#fff;letter-spacing:.01em}
+.fest h2{font-size:clamp(1.9rem,4.4vw,3rem);color:#fff;letter-spacing:.01em;text-transform:uppercase}
 .fest .fest-facts{display:grid;gap:12px;margin:24px 0 28px;font-weight:700;font-size:1.05rem}
 .fest .fest-facts div{display:flex;gap:12px;align-items:center}
 .fest .fest-facts .ico{color:var(--yellow);font-size:1.2rem}

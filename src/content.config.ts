@@ -45,4 +45,14 @@ const stories = defineCollection({
   }),
 });
 
-export const collections = { events, guests, articles, stories };
+const vacancies = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/vacancies' }),
+  schema: z.object({
+    title: z.string(),
+    meta: z.string().default('Ворзель · повна зайнятість'),
+    url: z.string().optional(),
+    sort: z.number().default(0),
+  }),
+});
+
+export const collections = { events, guests, articles, stories, vacancies };

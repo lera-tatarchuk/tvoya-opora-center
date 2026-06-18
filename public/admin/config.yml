@@ -57,6 +57,19 @@ collections:
       - { name: sort, label: "Порядок (менше — вище)", widget: number, default: 100, value_type: int }
       - { name: body, label: "Текст статті (необовʼязково)", widget: markdown, required: false }
 
+  - name: vacancies
+    label: "Вакансії"
+    label_singular: "Вакансію"
+    folder: "src/content/vacancies"
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: "Назва вакансії", widget: string }
+      - { name: meta, label: "Деталі (місто · зайнятість)", widget: string, default: "Ворзель · повна зайнятість" }
+      - { name: url, label: "Посилання на вакансію (robota.ua тощо)", widget: string, required: false, hint: "Якщо порожньо — кнопка відкриє лист на пошту" }
+      - { name: sort, label: "Порядок (менше — вище)", widget: number, default: 100, value_type: int }
+
   - name: stories
     label: "Історії родин"
     label_singular: "Історію"

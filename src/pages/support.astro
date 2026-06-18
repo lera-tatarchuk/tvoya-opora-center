@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const vacancies = (await getCollection('vacancies')).sort((a, b) => a.data.sort - b.data.sort);
 ---
 <Base title="Підтримати — Сімейний центр «Твоя опора»" description="Підтримайте центр донацією або станьте партнером. Партнери центру, вакансії та публікації про нас у медіа.">
   <section class="page-hero">
@@ -30,9 +32,12 @@ import Base from '../layouts/Base.astro';
       <div class="sec-head reveal"><span class="eyebrow">Долучайтеся до команди</span><h2>Вакансії</h2>
         <p class="lead" style="margin-top:12px">Ми шукаємо небайдужих фахівців, готових бути опорою для родин. Не знайшли свою позицію — надсилайте резюме, ми будемо раді знайомству.</p></div>
       <div class="vac-list">
-        <div class="vac-item reveal"><div><h3>Дитячий психолог</h3><div class="vmeta">Ворзель · повна зайнятість</div></div><a class="btn btn-ghost" href="mailto:info@tvoya-opora.org.ua?subject=Вакансія:%20Дитячий%20психолог">Відгукнутися</a></div>
-        <div class="vac-item reveal"><div><h3>Логопед / дефектолог</h3><div class="vmeta">Ворзель · повна / часткова зайнятість</div></div><a class="btn btn-ghost" href="mailto:info@tvoya-opora.org.ua?subject=Вакансія:%20Логопед%20/%20дефектолог">Відгукнутися</a></div>
-        <div class="vac-item reveal"><div><h3>Кейс-менеджер</h3><div class="vmeta">Ворзель · повна зайнятість</div></div><a class="btn btn-ghost" href="mailto:info@tvoya-opora.org.ua?subject=Вакансія:%20Кейс-менеджер">Відгукнутися</a></div>
+        {vacancies.map((v) => (
+          <div class="vac-item reveal">
+            <div><h3>{v.data.title}</h3><div class="vmeta">{v.data.meta}</div></div>
+            <a class="btn btn-ghost" href={v.data.url || `mailto:info@tvoya-opora.org.ua?subject=${encodeURIComponent('Вакансія: ' + v.data.title)}`} target={v.data.url ? '_blank' : null} rel={v.data.url ? 'noopener' : null}>Відгукнутися</a>
+          </div>
+        ))}
       </div>
       <p class="sch-note reveal">Надіслати резюме: <a href="mailto:info@tvoya-opora.org.ua" style="color:var(--coral);font-weight:700">info@tvoya-opora.org.ua</a></p>
     </div>

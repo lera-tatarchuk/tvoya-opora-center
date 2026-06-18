@@ -77,30 +77,12 @@ import Base from '../layouts/Base.astro';
             <p>Залиште заявку — і ми зв'яжемося з вами, щоб уточнити запит і запропонувати зручний час. Усі послуги безкоштовні.</p>
             <a class="phone" href="tel:+380671111800">📞 +38 (067) 111 18 00</a>
           </div>
-          <form class="book" id="bookForm">
-            <div>
-              <label for="bName">Ваше ім'я</label>
-              <input id="bName" name="name" required placeholder="Ім'я та прізвище">
+          <div>
+            <div class="gform">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeJ-r7bS8VfcJg-4pDUaqQ6qcxzWjYsIazZRsSeY7JLqc4hAQ/viewform?embedded=true" title="Форма запису на консультацію" loading="lazy">Завантаження форми…</iframe>
             </div>
-            <div class="f-row">
-              <div><label for="bPhone">Телефон</label><input id="bPhone" name="phone" type="tel" required placeholder="+380…"></div>
-              <div><label for="bWho">Кому потрібна допомога</label>
-                <select id="bWho" name="who"><option>Дитині</option><option>Дорослому</option><option>Усій родині</option></select>
-              </div>
-            </div>
-            <div>
-              <label for="bSpec">Фахівець (за потреби)</label>
-              <select id="bSpec" name="spec">
-                <option>Не визначився(лась)</option><option>Психолог</option><option>Логопед</option><option>Дефектолог</option><option>Нейропсихолог</option><option>Юрист</option><option>Фахівець з працевлаштування</option>
-              </select>
-            </div>
-            <div>
-              <label for="bMsg">Коротко про запит</label>
-              <textarea id="bMsg" name="msg" placeholder="Що вас турбує або з чим потрібна допомога"></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Надіслати заявку</button>
-            <p class="form-note">Натискаючи «Надіслати», ви погоджуєтесь, що ми зв'яжемося з вами щодо запиту. Дані не передаються третім особам.</p>
-          </form>
+            <p style="color:#fff;text-align:center;margin-top:12px;font-size:.82rem;opacity:.9">Форма не вантажиться? <a href="https://forms.gle/Rr2jsgfnLfHPdQih6" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Відкрити в новому вікні</a></p>
+          </div>
         </div>
       </div>
     </div>

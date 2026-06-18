@@ -236,6 +236,9 @@ form.book input:focus,form.book select:focus,form.book textarea:focus{outline:no
 form.book textarea{resize:vertical;min-height:78px}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-note{font-size:.78rem;color:var(--muted)}
+.gform{background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.gform iframe{width:100%;height:1180px;border:0;display:block}
+@media(max-width:560px){.gform iframe{height:1340px}}
 
 /* CONTACTS */
 .contacts{padding:var(--space) 0}
